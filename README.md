@@ -1,4 +1,4 @@
-##Abstract
+## Abstract
 
 This project focuses on the separation of a ternary BTX mixture—benzene (400 kg/h), toluene (600 kg/h), and p-xylene (100 kg/h)—at 30 °C and 1.3 bar using both shortcut and rigorous distillation methods in Aspen Plus. The separation target is to obtain benzene and toluene with purities of at least 95%, with final product pressures of 6 bar (benzene), 3 bar (toluene), and 4 bar (p-xylene).
 
