@@ -1,6 +1,16 @@
- ## Overview
-This project focuses on the simulation and optimization of a distillation system used to separate a BTX mixture containing **benzene, toluene, and p-xylene**. The objective is to achieve the required product purities while ensuring the desired downstream pressures and minimizing energy consumption.
+##Abstract
 
+This project focuses on the separation of a ternary BTX mixture—benzene (400 kg/h), toluene (600 kg/h), and p-xylene (100 kg/h)—at 30 °C and 1.3 bar using both shortcut and rigorous distillation methods in Aspen Plus. The separation target is to obtain benzene and toluene with purities of at least 95%, with final product pressures of 6 bar (benzene), 3 bar (toluene), and 4 bar (p-xylene).
+
+The workflow begins with verification of component boiling points and vapour–liquid equilibrium through Flash calculations. K-value analysis confirms the volatility order benzene > toluene > p-xylene, enabling correct identification of light and heavy keys. The average relative volatility for the first column (benzene/toluene) is approximately 2.19.
+
+Shortcut column design is performed using the Fenske–Underwood–Gilliland method. Fenske’s equation gives a minimum of about 6.92 theoretical stages. Underwood’s method determines the minimum reflux ratio, while Gilliland’s correlation relates operating reflux to actual stage count. These estimates are implemented using Aspen Plus’s DSTWU block, which predicts a benzene purity of roughly 96.13% in the distillate.
+
+A rigorous column model (Distl/RADFRAC) is then developed using stagewise mass and energy balances, tray efficiencies, and condenser/reboiler specifications. The rigorous simulation yields a practical benzene purity of approximately 95.2%, which is expected to be slightly lower than DSTWU due to real-stage inefficiencies and non-ideal VLE behavior.
+
+The second column (toluene/p-xylene) includes the effects of benzene carryover, requiring iterative optimization of reflux and feed stage location. Final purities and recoveries are validated using rigorous simulation.
+
+This combination of shortcut estimation and detailed modelling provides an efficient and accurate design approach for BTX separation, highlighting best practices for multicomponent distillation workflows.
 The study uses rigorous distillation modeling, flash calculations, relative volatility estimation, and optimization of reflux ratios and number of stages.
 
 ## Feed Composition
@@ -26,17 +36,10 @@ The study uses rigorous distillation modeling, flash calculations, relative vola
 - Verified product purities, flowrates, and exit conditions.  
 - Ensured no azeotropes in the operating temperature range.  
 
-## Important Results
-- Boiling Points at 1.3 bar:  
-  - Benzene: ~88.4 °C  
-  - Toluene: ~119.6 °C  
-  - p-Xylene: ~147.9 °C  
-- Relative Volatility (avg): **~2.19**  
-- Minimum number of stages: **~7**  
-- Final simulation meets required product purities and pressures.  
+
 
 ## Tools Used
-- **DWSIM / Aspen Plus** Distillation Models  
+- ** Aspen Plus** Distillation Models  
 - Pure Component & PT Envelope Analysis  
 - K-value and Flash calculations  
 - DSTWU Shortcut Design  
